@@ -22,43 +22,42 @@
         </style>
     </head>
     <body>
-
-        <div id="map"></div>
-
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+        <div id="map"></div>
         <script>
-            const map = L.map('map').setView([48.2, 16.37], 12);
+            const map = L.map('map', {
+                zoomControl: false
+            }).setView([48.2, 16.37], 12);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
 
             function parseCoords(str) {
-            return str.split('|').map(p => {
-              const [lat, lng] = p.split(',').map(Number);
-              return [lat, lng];
-            });
+                return str.split('|').map(p => {
+                  const [lat, lng] = p.split(',').map(Number);
+                  return [lat, lng];
+                });
             }
 
             function drawPolygon(coords) {
-            const polygon = L.polygon(coords, { color: 'red' }).addTo(map);
-            map.fitBounds(polygon.getBounds());
+                const polygon = L.polygon(coords, { color: 'red' }).addTo(map);
+                map.fitBounds(polygon.getBounds());
             }
 
             const params = new URLSearchParams(window.location.search);
             const polyParam = params.get('poly');
 
             if (polyParam) {
-            const coords = parseCoords(polyParam);
-            drawPolygon(coords);
-            document.getElementById("coords").value = polyParam;
+                const coords = parseCoords(polyParam);
+                drawPolygon(coords);
+                document.getElementById("coords").value = polyParam;
             }
 
             function generateLink() {
-            const value = document.getElementById("coords").value;
-            const url = window.location.origin + window.location.pathname + "?poly=" + encodeURIComponent(value);
-            document.getElementById("link").innerHTML = `<a href="${url}">${url}</a>`;
+                const value = document.getElementById("coords").value;
+                const url = window.location.origin + window.location.pathname + "?poly=" + encodeURIComponent(value);
+                document.getElementById("link").innerHTML = `<a href="${url}">${url}</a>`;
             }
         </script>
 
