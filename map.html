@@ -7,57 +7,251 @@
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <style>
-        body { margin: 0; }
-        #map { height: 100vh; }
-        #inputBox {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          z-index: 1000;
-          background: white;
-          padding: 10px;
-          border-radius: 8px;
-          width: 300px;
-        }
+            body { margin: 0; }
+            #map { height: 100vh; }
+            #inputBox {
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              z-index: 1000;
+              background: white;
+              padding: 10px;
+              border-radius: 8px;
+              width: 300px;
+            }
+            
+            .marker-icon {
+                background: #B5D7DA;
+                border: 2px solid #21888F;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                transform-origin: center;
+                transition: transform 0.15s ease;
+            }
+            
+            .marker-text {
+                color: black;
+                font-weight: bold;
+                font-size: 14px;
+            }
         </style>
     </head>
     <body>
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
         <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
         <script>
+            const polygonData = [
+              {
+                "n": 1,
+                "coords": [
+                  [48.205435, 16.335650],
+                  [48.205475, 16.336625],
+                  [48.204185, 16.336750],
+                  [48.204145, 16.335765]
+                ]
+              },
+              {
+                "n": 2,
+                "coords": [
+                  [48.204145,16.335765],
+                  [48.204185,16.336750],
+                  [48.202645,16.336900],
+                  [48.202610,16.335910]
+                ]
+              },
+              {
+                "n": 3,
+                "coords": [
+                  [48.202610,16.335910],
+                  [48.202645,16.336900],
+                  [48.201550,16.337045],
+                  [48.201440,16.336025],
+                  [48.201665,16.335985]
+                ]
+              },
+              {
+                "n": 4,
+                "coords": [
+                  [48.205390,16.3346750],
+                  [48.205435,16.335650],
+                  [48.204145,16.335765],
+                  [48.204100,16.3348050]
+                ]
+              },
+              {
+                "n": 5,
+                "coords": [
+                  [48.204100,16.334805],
+                  [48.204145,16.335765],
+                  [48.202610,16.335910],
+                  [48.202570,16.335060],
+                  [48.202580,16.334950]
+                ]
+              },
+              {
+                "n": 6,
+                "coords": [
+                  [48.205350,16.333715],
+                  [48.205390,16.334675],
+                  [48.204100,16.334805],
+                  [48.204060,16.333815]
+                ]
+              },
+              {
+                "n": 7,
+                "coords": [
+                  [48.204060,16.333815],
+                  [48.204100,16.334805],
+                  [48.202580,16.334950],
+                  [48.202540,16.334080],
+                  [48.202580,16.333990],
+                  [48.203330,16.333920],
+                  [48.203450,16.333870]
+                ]
+              },
+              {
+                "n": 8,
+                "coords": [
+                  [48.205480,16.332865],
+                  [48.205350,16.333715],
+                  [48.204060,16.333815],
+                  [48.204050,16.333530],
+                  [48.204225,16.332420]
+                ]
+              },
+              {
+                "n": 9,
+                "coords": [
+                  [48.205650,16.331740],
+                  [48.205480,16.332865],
+                  [48.204225,16.332420],
+                  [48.204395,16.331320]
+                ]
+              },
+              {
+                "n": 10,
+                "coords": [
+                  [48.205800,16.330755],
+                  [48.205650,16.331740],
+                  [48.204395,16.331320],
+                  [48.204545,16.330325]
+                ]
+              },
+              {
+                "n": 11,
+                "coords": [
+                  [48.204545,16.330325],
+                  [48.204395,16.331320],
+                  [48.203835,16.331345],
+                  [48.203835,16.330095],
+                  [48.204040,16.330150]
+                ]
+              },
+              {
+                "n": 12,
+                "coords": [
+                  [48.203835,16.330095],
+                  [48.203835,16.331345],
+                  [48.203345,16.331380],
+                  [48.203295,16.329970]
+                ]
+              },
+              {
+                "n": 13,
+                "coords": [
+                  [48.203295,16.329970],
+                  [48.203345,16.331380],
+                  [48.202845,16.331420],
+                  [48.202815,16.329890]
+                ]
+              },
+              {
+                "n": 17,
+                "coords": [
+                  [48.205955,16.329730],
+                  [48.205800,16.330755],
+                  [48.204545,16.330325],
+                  [48.204700,16.329300]
+                ]
+              },
+              {
+                "n": 18,
+                "coords": [
+                  [48.206110,16.328720],
+                  [48.205955,16.329730],
+                  [48.204700,16.329300],
+                  [48.204855,16.328300]
+                ]
+              },,
+              {
+                "n": 19,
+                "coords": [
+                  [48.204855,16.328300],
+                  [48.204700,16.329300],
+                  [48.204545,16.330325],
+                  [48.204040,16.330150],
+                  [48.204265,16.328130]
+                ]
+              }
+            ];
             const map = L.map('map').setView([48.2, 16.37], 12);
+            const params = new URLSearchParams(window.location.search);
+            const number = params.get('n') || '0';
+            const polyParam = params.get('poly');
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
-
-            function parseCoords(str) {
-                return str.split('|').map(p => {
-                  const [lat, lng] = p.split(',').map(Number);
-                  return [lat, lng];
-                });
-            }
-
-            function drawPolygon(coords) {
-                const polygon = L.polygon(coords, { color: 'red' }).addTo(map);
-                map.fitBounds(polygon.getBounds());
-            }
-
-            const params = new URLSearchParams(window.location.search);
-            const polyParam = params.get('poly');
-
+            
             if (polyParam) {
                 const coords = parseCoords(polyParam);
                 drawPolygon(coords);
                 document.getElementById("coords").value = polyParam;
             }
 
-            function generateLink() {
-                const value = document.getElementById("coords").value;
-                const url = window.location.origin + window.location.pathname + "?poly=" + encodeURIComponent(value);
-                document.getElementById("link").innerHTML = `<a href="${url}">${url}</a>`;
+            function parseCoords(str) {
+                return str.split('|').map(p => {
+                    return p.split(',').map(Number);
+                });
             }
-        </script>
 
+            function drawPolygon(coords) {
+                const polygon = L.polygon(coords, {
+                    color: '#21888F'
+                }).addTo(map);
+                map.fitBounds(polygon.getBounds());
+                L.marker(polygon.getBounds().getCenter(), {
+                    icon: L.divIcon({
+                        className: 'marker-icon',
+                        html: `<b class="marker-text">${number}</b>`,
+                        iconSize: [16, 16]
+                    })
+                }).addTo(map);
+            }
+            
+            function drawPolygons() {
+                polygonData.forEach(item => {
+                    const polygon = L.polygon(item.coords, {
+                        color: '#21888F'
+                    }).addTo(map);
+                    if (item.n === 12) map.fitBounds(polygon.getBounds());
+                    L.marker(polygon.getBounds().getCenter(), {
+                        icon: L.divIcon({
+                          className: 'marker-icon',
+                          html: `<div class="inner">${item.n}</div>`,
+                          iconSize: [16, 16]
+                        })
+                    }).addTo(map);
+                });
+            }
+            
+            drawPolygons();
+        </script>
     </body>
 </html>
