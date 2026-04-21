@@ -90,6 +90,16 @@
                     })
                 }).addTo(map);
             }
+
+            async function loadPolygons() {
+                try {
+                    const response = await fetch('polygon_data.json');
+                    polygonData = await response.json();
+                    drawPolygons();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
             
             function drawPolygons() {
                 polygonData.forEach(item => {
@@ -117,16 +127,6 @@
                 });
             }
             
-            async function loadPolygons() {
-                try {
-                    const response = await fetch('polygon_data.json');
-                    polygonData = await response.json();
-                    drawPolygons();
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-
             loadPolygons();
         </script>
     </body>
