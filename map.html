@@ -52,11 +52,8 @@
         </style>
     </head>
     <body>
-
         <div id="map"></div>
-
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
         <script>
             let polygonData = [];
             const map = L.map('map').setView([48.2, 16.37], 12);
@@ -113,7 +110,7 @@
                     L.marker(polygon.getBounds().getCenter(), {
                         icon: L.divIcon({
                           className: `${markerIconClass}`,
-                          html: `<div class="marker-text">${item.original_n}</div>`,
+                          html: `<div class="marker-text">${item.n}</div>`,
                           iconSize: [32, 24]
                         })
                     }).addTo(map);
