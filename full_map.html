@@ -19,6 +19,18 @@
               border-radius: 8px;
               width: 300px;
             }
+
+            .marker-icon-PEN {
+                background: #AAD6C5;
+                border: 2px solid #008351;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                transform-origin: center;
+                transition: transform 0.15s ease;
+            }
             
             .marker-icon-FUE {
                 background: #B5D7DA;
@@ -88,13 +100,17 @@
                 polygonData.forEach(item => {
                     let markerIconClass = '';
                     let polygonColor = '';
-                    if (1600 <= item.n && item.n < 1700) {
-                        markerIconClass = 'marker-icon-OTK';
-                        polygonColor = '#FF7F50';
+                    if (1400 <= item.n && item.n < 1500) {
+                        markerIconClass = 'marker-icon-PEN';
+                        polygonColor = '#008351';
                     }
                     else if (1500 <= item.n && item.n < 1600) {
                         markerIconClass = 'marker-icon-FUE';
                         polygonColor = '#21888F';
+                    }
+                    else if (1600 <= item.n && item.n < 1700) {
+                        markerIconClass = 'marker-icon-OTK';
+                        polygonColor = '#FF7F50';
                     }
                     else if (3000 <= item.n && item.n < 3100) {
                         markerIconClass = 'marker-icon-MAU';
