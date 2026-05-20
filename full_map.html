@@ -80,7 +80,7 @@
             let polygonData = [];
             const map = L.map('map').setView([48.2, 16.37], 12);
             const urlParams = new URLSearchParams(window.location.search);
-            const show = urlParams.get('show');
+            const show = urlParams.get('show') || 'ext';
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
@@ -104,7 +104,7 @@
                     else if (1500 <= item.int_n && item.int_n < 1600) polygonClass = 'FUE';
                     else if (1600 <= item.int_n && item.int_n < 1700) polygonClass = 'OTK';
                     else if (3000 <= item.int_n && item.int_n < 3100) polygonClass = 'MAU';
-                    const polygon = L.polygon(item.coords, {
+                    const polygon = L.polygon(item.cords, {
                         className: `${polygonClass}`
                     }).addTo(map);
                     if (item.int_n === 0000) map.fitBounds(polygon.getBounds());
