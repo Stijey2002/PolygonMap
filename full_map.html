@@ -80,7 +80,7 @@
             let polygonData = [];
             const map = L.map('map').setView([48.2, 16.37], 12);
             const urlParams = new URLSearchParams(window.location.search);
-            const show = params.get('show') || 'ext';
+            const show = params.get('show');
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
