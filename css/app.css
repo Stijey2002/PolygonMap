@@ -1,0 +1,100 @@
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    body {
+        margin: 0;
+    }
+
+    .a4 {
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: montserrat, sans-serif;
+}
+
+#FM_DIV_Map {
+    height: 100vh;
+    width: 100vw;
+}
+.FM_UL {
+    margin: 0;
+    padding-left: 5mm;
+    font-size: 14px;
+}
+
+.marker-icon {
+    background: var(--light);
+    border: 2px solid var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform-origin: center;
+    transition: transform 0.15s ease;
+}
+
+.marker-text {
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.polygon {
+    fill-opacity: .1;
+    fill: var(--dark);
+    stroke: var(--dark);
+}
+
+.popup .leaflet-popup-content-wrapper {
+    background: var(--light);
+    color: #000;
+    border: 4px solid var(--dark);
+}
+
+.popup .leaflet-popup-tip {
+    background: var(--dark);
+}
+
+.leaflet-popup-close-button {
+    width: 24px;
+    height: 24px;
+
+    top: 8px !important;
+    right: 8px !important;
+
+    font-size: 24px !important;
+    font-weight: 300 !important;
+}
+
+.gen {
+    --light: #E8E8E8;
+    --dark: #000000;
+}
+
+.green {
+    --light: #AAD6C5;
+    --dark: #008351;
+}
+
+.petrol {
+    --light: #B5D7DA;
+    --dark: #21888F;
+}
+
+.orange {
+    --light: #FFD4C5;
+    --dark: #FF7F50;
+}
+
+.brown {
+    --light: #E6D4C3;
+    --dark: #B57D4A;
+}

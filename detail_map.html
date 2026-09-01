@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="referrer" content="origin">
+        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" href="css/detail_map.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <title>Polygon Details</title>
+    </head>
+    <body id="DM_BODY">
+        <script src="js/leaflet.js"></script>
+        <script src="js/qrcode.min.js"></script>
+        <script src="js/security.js"></script>
+        <script src="js/detail_map.js"></script>
+        <div id="DM_DIV_PolygonContainer">
+            <div id="DM_DIV_Title">
+                <h1 id="DM_H_Title"></h1>
+            </div>
+            <div id="DM_DIV_Map"></div>
+            <div id="DM_DIV_Addresses">
+                <h2 id="DM_H_Addresses">Adressen</h2>
+                <ul id="DM_UL_Addresses"></ul>
+            </div>
+            <div id="DM_DIV_NotVisit">
+                <h2 id="DM_H_NotVisit">Nicht besuchen</h2>
+                <ul id="DM_UL_NotVisit"></ul>
+            </div>
+            <div id="DM_DIV_QRContainer">
+                <div id="DM_DIV_QR"></div>
+            </div>
+        </div>
+    </body>
+</html>
