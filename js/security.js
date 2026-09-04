@@ -6,7 +6,7 @@ function encode(arr, factor) {
 }
 function decode(arr, divisor) {
     return arr.map(value => {
-        const result = parseInt(value, 16) / parseInt(divisor, 16);
+        const result = Math.round(parseInt(value, 16) / parseInt(divisor, 16));
         return result.toString(16);
     });
 }

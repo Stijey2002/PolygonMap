@@ -2,6 +2,12 @@ body {
     margin: 0;
     font-family: montserrat, sans-serif;
 }
+h2 {
+    font-size: 1.25rem;
+}
+h3 {
+    font-size: 1rem;
+}
 
 #FM_DIV_Map {
     height: 100vh;
@@ -10,7 +16,7 @@ body {
 .FM_UL {
     margin: 0;
     padding-left: 5mm;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .marker-icon {
@@ -28,7 +34,7 @@ body {
 .marker-text {
     color: black;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .polygon {
@@ -54,7 +60,7 @@ body {
     top: 8px !important;
     right: 8px !important;
 
-    font-size: 24px !important;
+    font-size: 2rem !important;
     font-weight: 300 !important;
 }
 

@@ -7,17 +7,18 @@ async function initVars() {
     key = params[1];
     cipherKey = decode(params[2].split("-"), key);
     try {
+        console.log(filename, cipherKey);
         polygonData = JSON.parse(await fetchAndDecrypt(filename, cipherKey));
         if (Object.keys(polygonData).includes(key)) polygonData = polygonData[key];
         else polygonData = null;
-    } catch (e) {console.error(e);window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";}
-    if (polygonData !== null) {
+    } catch (e) {console.error(e);/*window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";*/}
+    if (polygonData !== undefined && polygonData !== null) {
         if (1400 <= polygonData.int_n && polygonData.int_n < 1500) polygonClass = "green";
         else if (1500 <= polygonData.int_n && polygonData.int_n < 1600) polygonClass = "petrol";
         else if (1600 <= polygonData.int_n && polygonData.int_n < 1700) polygonClass = "orange";
         else if (3000 <= polygonData.int_n && polygonData.int_n < 3100) polygonClass = "brown";
     }
-    else window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    // else window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 }
 function initView() {
     h_title = document.getElementById("DM_H_Title");

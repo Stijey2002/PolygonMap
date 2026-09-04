@@ -35,7 +35,7 @@ function prepareView() {
             polygon.addTo(div_map);
             let n = item.ext_n;
             if (show === 'int') n = item.int_n;
-            let addresses = "", notVisit = "";
+            let addresses, notVisit = "";
             if (item.nov.length !== 0) {
                 notVisit = `
                 <h3>Nicht besuchen</h3>
@@ -49,7 +49,7 @@ function prepareView() {
                     <li>${item.adr.sort((a, b) => a.localeCompare(b)).join("</li><li>")}</li>
                 </ul>
             `;
-            polygon.bindPopup(`<h2><a href=detail.html#${filename}/${key}/${encode(cipherKey, key)} target="_blank">Gebiet ${n}</a></h2>${addresses}${notVisit}`, {
+            polygon.bindPopup(`<h2><a href=detail.html#${filename}/${key}/${encode(cipherKey, key)} target="_blank">Gebiet ${item.ext_n} (${item.int_n})</a></h2>${addresses}${notVisit}`, {
                 className: `popup ${polygonClass}`
             });
             const icon = L.divIcon({

@@ -48,7 +48,7 @@
     align-items: center;
 
 }
-#DM_H_Title, #DM_H_Return {
+#DM_H_Title {
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -71,7 +71,7 @@
 #DM_UL_Addresses {
     margin: 0;
     padding-left: 6mm;
-    font-size: 18px;
+    font-size: 1rem;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -85,7 +85,7 @@
 #DM_UL_NotVisit {
     margin: 0;
     padding-left: 6mm;
-    font-size: 18px;
+    font-size: 1rem;
 }
 #DM_DIV_QRContainer {
     flex: 1;
